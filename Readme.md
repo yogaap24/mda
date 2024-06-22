@@ -133,7 +133,7 @@ usually have these:
 
 Exported functions on each module area as follows:
 
-- `SetPool()` for setting up the global database connection pool. 
+- `SetPool()` for setting up the global database connection pool.
 - `Router()` for exporting the `chi.Mux` object to be mounted.
 - The domain object, this is optional. If you want to hide and isolate your
   domain objects, then you can just make it private
@@ -157,7 +157,7 @@ go build --tags=fake
 
 ## Configuration
 
-### Rationale 
+### Rationale
 
 The early version of this program didn't have configuration file and all
 parameters are being hard-coded. At first I think that's enough. However, I
@@ -171,14 +171,16 @@ sources: environment variables and configuration files. Configuration files
 takes precedence. These are the environment variables, configuration file key
 path and default value.
 
-| Environment Variable  | YAML keypath  | Default value | Description          |
-|-----------------------|---------------|---------------|----------------------|
-| `KAD_LISTEN_HOST`     | `listen.host` | "127.0.0.1"   | Server Listen Address|
-| `KAD_LISTEN_PORT`     | `listen.port` | 8080          | Server Port Address  |
-| `KAD_DB_HOST`         | `db.host`     | "127.0.0.1"   | Postgres Host        |
-| `KAD_DB_PORT`         | `db.port`     | 5432          | Postgres Port        |
-| `KAD_DB_NAME`         | `db.db_name`  | "todo"        | Database Name        |
-| `KAD_DB_SSL`          | `db.ssl_mode` | "disable"     | SSL Mode             |
+| Environment Variable | YAML keypath  | Default value | Description           |
+|----------------------|---------------|---------------|-----------------------|
+| `KAD_LISTEN_HOST`    | `listen.host` | "127.0.0.1"   | Server Listen Address |
+| `KAD_LISTEN_PORT`    | `listen.port` | 8080          | Server Port Address   |
+| `KAD_DB_USER`        | `db.user`     | postgres      | Postgres User         |
+| `KAD_DB_PASSWORD`    | `db.password` | password      | Postgres Password     |
+| `KAD_DB_HOST`        | `db.host`     | "127.0.0.1"   | Postgres Host         |
+| `KAD_DB_PORT`        | `db.port`     | 5432          | Postgres Port         |
+| `KAD_DB_NAME`        | `db.db_name`  | "todo"        | Database Name         |
+| `KAD_DB_SSL`         | `db.ssl_mode` | "disable"     | SSL Mode              |
 
 The default values, if we express it in configuration file is as follows.
 
@@ -188,6 +190,8 @@ listen:
   port: 8080
 
 db:
+  user: postgres
+  password: password
   db_name: todo
   host: 127.0.0.1
   port: 5432 
